@@ -82,19 +82,50 @@ Black-Scholes formula with current volatility and risk-free rate
 
 ## Installation
 
-1. Install dependencies:
+### Prerequisites
+
+Install **uv** - a fast, modern Python package manager:
+
 ```bash
-pip install -r requirements.txt
+# macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Or via pip
+pip install uv
+
+# Or via Homebrew
+brew install uv
 ```
 
-2. Run the application:
+### Quick Start
+
+1. **Clone and navigate to the project**:
 ```bash
-python broker_app.py
+cd stock_sim
 ```
 
-3. Open your browser to:
+2. **Run the application** (uv handles dependencies automatically):
+```bash
+./run.sh
+```
+
+Or manually:
+```bash
+uv sync                    # Install dependencies
+uv run python broker_app.py  # Run the app
+```
+
+3. **Open your browser to**:
 ```
 http://localhost:5000
+```
+
+### Alternative: Traditional pip Installation
+
+If you prefer pip over uv:
+```bash
+pip install -e .
+python broker_app.py
 ```
 
 ## Usage Guide

@@ -243,5 +243,16 @@ def set_simulation_speed():
     return jsonify({"speed": simulation_speed})
 
 
-if __name__ == '__main__':
+def main():
+    """Main entry point for the application"""
+    print("=" * 50)
+    print("  Stock Simulation Game")
+    print("=" * 50)
+    print("\nStarting server...")
+    print("Open your browser to: http://localhost:5000")
+    print("\nPress Ctrl+C to stop\n")
     app.run(debug=True, host='0.0.0.0', port=5000, threaded=True)
+
+
+if __name__ == '__main__':
+    main()

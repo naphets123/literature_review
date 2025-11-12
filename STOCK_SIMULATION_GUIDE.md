@@ -24,22 +24,39 @@ stock_sim/
 
 ## Quick Start
 
-### 1. Install Dependencies
+### 1. Install uv (if not already installed)
+
+**uv** is a fast, modern Python package manager:
 
 ```bash
-cd stock_sim
-pip install -r requirements.txt
+# macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Or via pip
+pip install uv
 ```
 
 ### 2. Run the Application
 
-**Option A: Using the script**
+**Option A: Using the script (recommended)**
 ```bash
+cd stock_sim
 ./run.sh
 ```
 
-**Option B: Direct Python**
+The script automatically installs dependencies and starts the server!
+
+**Option B: Manual commands**
 ```bash
+cd stock_sim
+uv sync                      # Install dependencies
+uv run python broker_app.py  # Run the app
+```
+
+**Option C: Using pip (traditional)**
+```bash
+cd stock_sim
+pip install -e .
 python3 broker_app.py
 ```
 
