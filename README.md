@@ -14,13 +14,30 @@ A simple ASCII roguelike game built with Python and libtcod.
 
 ## Installation
 
+This project uses [uv](https://docs.astral.sh/uv/) for package management.
+
+### Install uv (if not already installed)
+
 ```bash
-pip install -r requirements.txt
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+### Install dependencies
+
+```bash
+uv sync
 ```
 
 ## Running the Game
 
 ```bash
+uv run python main.py
+```
+
+Or activate the virtual environment and run directly:
+
+```bash
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 python main.py
 ```
 
