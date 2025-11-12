@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Broker Simulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Stock Broker Simulation</h1>
+            <div class="simulation-controls">
+                <button id="startBtn" class="btn btn-success">Start Simulation</button>
+                <button id="stopBtn" class="btn btn-danger" disabled>Stop Simulation</button>
+                <label>Speed: <span id="speedDisplay">1.0x</span></label>
+                <input type="range" id="speedSlider" min="0.1" max="5" step="0.1" value="1.0">
+            </div>
+        </header>
+
+        <!-- Economic Dashboard -->
+        <section class="economic-dashboard">
+            <h2>Economic Indicators</h2>
+            <div class="indicators">
+                <div class="indicator">
+                    <div class="indicator-label">Interest Rate</div>
+                    <div class="indicator-value" id="interestRate">5.00%</div>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-label">Unemployment</div>
+                    <div class="indicator-value" id="unemployment">4.00%</div>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-label">Market Sentiment</div>
+                    <div class="indicator-value" id="sentiment">0.10</div>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-label">Inflation</div>
+                    <div class="indicator-value" id="inflation">2.00%</div>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-label">GDP Growth</div>
+                    <div class="indicator-value" id="gdpGrowth">2.00%</div>
+                </div>
+                <div class="indicator">
+                    <div class="indicator-label">Time Step</div>
+                    <div class="indicator-value" id="timeStep">0</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Summary -->
+        <section class="portfolio-summary">
+            <h2>Portfolio Summary</h2>
+            <div class="portfolio-stats">
+                <div class="stat">
+                    <div class="stat-label">Total Value</div>
+                    <div class="stat-value" id="totalValue">$100,000.00</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Cash</div>
+                    <div class="stat-value" id="cash">$100,000.00</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Positions Value</div>
+                    <div class="stat-value" id="positionsValue">$0.00</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Total P&L</div>
+                    <div class="stat-value" id="totalPnl">$0.00</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-label">Return</div>
+                    <div class="stat-value" id="returnPercent">0.00%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Asset List -->
+            <section class="asset-list">
+                <h2>Available Assets</h2>
+                <div class="asset-filter">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="stock">Stocks</button>
+                    <button class="filter-btn" data-filter="bond">Bonds</button>
+                    <button class="filter-btn" data-filter="option">Options</button>
+                </div>
+                <div id="assetListContainer"></div>
+            </section>
+
+            <!-- Portfolio Positions -->
+            <section class="positions">
+                <h2>Your Positions</h2>
+                <div id="positionsContainer">
+                    <p class="empty-message">No positions yet. Start by buying some assets!</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Trade Modal -->
+        <div id="tradeModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Trade: <span id="modalSymbol"></span></h2>
+                <p id="modalAssetName"></p>
+                <p>Current Price: $<span id="modalPrice"></span></p>
+
+                <div class="trade-form">
+                    <div class="form-group">
+                        <label>Action:</label>
+                        <select id="tradeAction">
+                            <option value="buy">Buy</option>
+                            <option value="sell">Sell</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantity:</label>
+                        <input type="number" id="tradeQuantity" min="1" step="1" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Estimated Total:</label>
+                        <span id="estimatedTotal">$0.00</span>
+                    </div>
+                    <button id="executeTrade" class="btn btn-primary">Execute Trade</button>
+                    <div id="tradeMessage" class="trade-message"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
